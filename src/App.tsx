@@ -1,9 +1,13 @@
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../src/components/Header/Header';
+import FilterBar from './components/FilterBar/FilterBar';
 
 const theme = createTheme({
   palette: {
+    background: {
+      default: '#FCFCFC',
+    },
     primary: {
       // Purple and green play nicely together.
       main: '#c6198f',
@@ -17,12 +21,29 @@ const theme = createTheme({
       dark: '#3E076D',
     },
   },
+  typography: {
+    "fontFamily": `"Roboto", "Helvetica", "Arial", sans-serif`,
+    "fontSize": 14,
+    "fontWeightLight": 300,
+    "fontWeightRegular": 400,
+    "fontWeightMedium": 500
+   },
+   breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1536,
+    },
+  },
 });
 function App() {
 
   return (
     <ThemeProvider theme={theme}>
       <Header/>
+      <FilterBar/>
       <div style={{height:"200vh"}}>
 
       </div>
