@@ -1,6 +1,7 @@
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../src/components/Header/Header';
+import Catalog from './components/Catalog/Catalog';
 import FilterBar from './components/FilterBar/FilterBar';
 
 const theme = createTheme({
@@ -44,9 +45,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header/>
       <FilterBar/>
-      <div style={{height:"200vh"}}>
-
-      </div>
+      <Catalog/>
 
     </ThemeProvider>
   

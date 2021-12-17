@@ -66,7 +66,7 @@ export default function FilterBar() {
                               onClick={cleanFilters}
                               edge="end"
                             >
-                              {skillInput ? <CloseIcon fontSize="small" color="secondary"/>  : <CloseIcon  sx={{display: 'none', cursor: 'none'}}/>}
+                              {regionInput ? <CloseIcon fontSize="small" color="secondary"/>  : <CloseIcon  sx={{display: 'none', cursor: 'none'}}/>}
                             </IconButton>
                           </InputAdornment>}}/>
                         <Box sx={{
