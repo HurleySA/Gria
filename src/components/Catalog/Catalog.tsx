@@ -3,9 +3,9 @@ import { makeStyles } from "@mui/styles"
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-interface vagasProps{
+interface jobsProps{
     id: number;
     nameCompany: string;
     srcLogo: string;
@@ -54,16 +54,27 @@ const getDaysDiff = (data: Date) =>{
     return (Math.ceil(diasNow) - Math.ceil(daysPostedJob));
 }
 export default function Catalog() {
-    const [vagas, setVagas] = useState<vagasProps[]>([]);
     const [loading, setLoading] = useState<Boolean>(true);
-    const [page, setPage] = useState<number>(2);
+    
+    const [jobs, setJobs] = useState<jobsProps[]>([]);
+    const [currentPage, setCurrentPage] = useState<number>(0);
+    const [itensPerPage, setItensPerPage] = useState<number>(8);
+
+    const pagesPagination = Math.ceil(jobs.length / itensPerPage);
+    const startIndex = currentPage * itensPerPage;
+    const lastIndex = startIndex + itensPerPage;
+   
+    const getCurrentJobs = useCallback((startIndex:number,lastIndex: number) =>  { return jobs.slice(startIndex, lastIndex)},
+    [jobs],
+    )
+    const currentJobs = getCurrentJobs(startIndex, lastIndex);
 
     useEffect(()=> {
-        const url = "http://localhost:8000/vagas";
+        const url = "http://localhost:8000/jobs";
         fetch(url)
         .then(res => res.json())
         .then(json => {
-            setVagas(json)
+            setJobs(json)
             setLoading(false);
         })
     },[])
@@ -72,21 +83,21 @@ export default function Catalog() {
     return (
         <Container maxWidth="lg">
             <Typography variant="body1" component="div" sx={{fontSize:'1.3rem', fontWeight:'bold'}} className={classes.teste}>
-                Encontramos {vagas.length} oportunidades cadastradas
+                Encontramos {jobs.length} oportunidades cadastradas
             </Typography>
             <Grid container spacing={4}>
-                {vagas.map(vaga => (
-                    <Grid item lg={3} md={4} sm={6} xs={9} key={vaga.id} sx={{maxWidth:"300px"}}>
+                {currentJobs.map(job => (
+                    <Grid item lg={3} md={4} sm={6} xs={9} key={job.id} sx={{maxWidth:"300px"}}>
                     <Link href="https://www.gria.io/" underline="none" color="inherit" sx={{padding:"1rem",boxShadow:'0px 2px 2px rgb(0 0 0 / 10%)', height:"100%"}} className={classes.gridItem}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Avatar alt="Remy Sharp" src={vaga.srcLogo} sx={{marginRight:'10px'}}/>
+                            <Avatar alt="Remy Sharp" src={job.srcLogo} sx={{marginRight:'10px'}}/>
                             <Typography variant="body1" component="div" align="center" sx={{maxWidth:"180px", height:"60px", fontSize:".8rem", fontWeight:"300", lineHeight:".8rem"}} >
-                            {vaga.nameCompany}
+                            {job.nameCompany}
                             </Typography>
                         </Box>
                         <Box sx={{height:"60px"}}>
                         <Typography variant="body1" component="div" sx={{fontSize:".8rem", fontWeight:'bold', padding:".7rem 0rem 0rem 0rem"}}>
-                            {vaga.nameJob}
+                            {job.nameJob}
                         </Typography>
                         </Box>   
                         <Grid container direction="row" alignItems="center" spacing={1}>
@@ -94,7 +105,7 @@ export default function Catalog() {
                                 <PersonSearchIcon fontSize="small" sx={{color: '#919090'}}/>
                             </Grid>
                             <Grid item sx={{fontSize:".7rem", fontWeight:"300", lineHeight:".8rem"}}>
-                                {vaga.position}
+                                {job.position}
                             </Grid>
                         </Grid>
                         <Grid container direction="row" alignItems="center" spacing={1}>
@@ -102,7 +113,7 @@ export default function Catalog() {
                                 <AccessAlarmIcon fontSize="small" sx={{color: '#919090'}}/>
                             </Grid>
                             <Grid item sx={{fontSize:".7rem", fontWeight:"300", lineHeight:".8rem"}}>
-                                {vaga.period}
+                                {job.period}
                             </Grid>
                         </Grid>
                         <Grid container direction="row" alignItems="center" spacing={1}>
@@ -110,11 +121,11 @@ export default function Catalog() {
                                 <LocationOnOutlinedIcon fontSize="small" sx={{color: '#919090'}}/>
                             </Grid>
                             <Grid item sx={{fontSize:".7rem", fontWeight:"300", lineHeight:".8rem"}}>
-                                {vaga.location}
+                                {job.location}
                             </Grid>
                         </Grid>
                         <Typography variant="body1" component="div" sx={{fontSize:".7rem", margin:"2.5rem  0rem 0rem 0rem"}}>
-                            Criada há {getDaysDiff(vaga.date)} dias
+                            Criada há {getDaysDiff(job.date)} dias
                         </Typography>
                      </Link>
                  </Grid>
@@ -123,7 +134,7 @@ export default function Catalog() {
                 
             </Grid>
 
-            <Pagination count={Math.ceil(vagas.length/3)} color="secondary" className={classes.pagination} onChange={(event, page) => console.log(page)} />
+            <Pagination count={pagesPagination} color="secondary" className={classes.pagination} onChange={(event, page) => setCurrentPage(page - 1)} />
         </Container>
     )
 }
