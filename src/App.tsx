@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../src/components/Header/Header';
 import Catalog from './components/Catalog/Catalog';
 import FilterBar from './components/FilterBar/FilterBar';
+import { CssBaseline } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline/>
       <Header/>
       <FilterBar/>
       <Catalog/>
