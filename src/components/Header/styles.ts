@@ -40,7 +40,5 @@ export  const useStyles = makeStyles({
       color: 'white', 
       display: 'flex', 
       fontWeight: 'bold !importante',
-    }
-  
-  
+    },
   });

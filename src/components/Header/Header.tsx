@@ -44,36 +44,18 @@ export default function Header() {
             </Typography>
             <div className={classes.grow}/>
             <Box  sx={{display: { xs: 'flex', md: 'none' }, backgroundColor: '#CF1B92'  }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
+              <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit"
               >
                 <MenuIcon />
               </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: 'block', md: 'none' },
-                }}
+              <Menu id="menu-appbar" anchorEl={anchorElNav} anchorOrigin={{ vertical: 'bottom', horizontal: 'left',}} keepMounted
+                transformOrigin={{vertical: 'top',horizontal: 'left',}} open={Boolean(anchorElNav)} onClose={handleCloseNavMenu}
+                sx={{ display: { xs: 'block', md: 'none' }}}
               >
                   <MenuItem onClick={handleCloseNavMenu} className={classes.menuPaperItem}>
-                    <Typography textAlign="center" className={classes.menuPaperText}>Oportunidades</Typography>
+                    <Typography textAlign="center" className={classes.menuPaperText}>
+                      <Link href="https://www.gria.io/oportunidades">Oportunidades</Link>
+                    </Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseNavMenu} className={classes.menuPaperItem}>
                     <Typography textAlign="center" className={classes.menuPaperText}>LOGIN</Typography>
@@ -81,44 +63,20 @@ export default function Header() {
               </Menu>
             </Box>
             <Box sx={{ display: { xs: 'none', md: 'flex' }}}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ color: 'white', display: 'block', mr: 4, textTransform: 'capitalize', fontWeight: 'bold' }}
-                >
-                  <Link href="#" color="inherit" underline="none">Oportunidades</Link>
-                  
+                <Button onClick={handleCloseNavMenu} sx={{ color: 'white', display: 'block', mr: 4, textTransform: 'capitalize', fontWeight: 'bold' }}>
+                  <Link href="https://www.gria.io/oportunidades" color="inherit" underline="none">Oportunidades</Link>
                 </Button>
-                <Button
-                  onClick={handleOpenLoginMenu}
-                  sx={{ color: 'white', display: 'flex', fontWeight: 'bold' }}
-                  className={classes.buttonHover}
-                  endIcon={<KeyboardArrowDownIcon/>}
-                > Login
+                <Button onClick={handleOpenLoginMenu} sx={{ color: 'white', display: 'flex', fontWeight: 'bold' }} className={classes.buttonHover} endIcon={<KeyboardArrowDownIcon/>}> 
+                  Login
                 </Button>
-                <Menu
-                id="login-appbar"
-                anchorEl={anchorElLogin}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElLogin)}
-                onClose={handleCloseLoginMenu}
-                sx={{
-                  display: { xs: 'none', md: 'block' }
-                }}
-                className={classes.menuPaper}
+                <Menu id="login-appbar" anchorEl={anchorElLogin} anchorOrigin={{ vertical: 'bottom', horizontal: 'left',}} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'left',}}
+                open={Boolean(anchorElLogin)} onClose={handleCloseLoginMenu} sx={{display: { xs: 'none', md: 'block' }}} className={classes.menuPaper}
               >
                   <MenuItem onClick={handleCloseLoginMenu} className={classes.menuPaperItem}>
-                    <Typography textAlign="center"  className={classes.menuPaperText}>CANDIDATO</Typography>
+                    <Typography textAlign="center"  className={classes.menuPaperText}> <Link href="https://www.gria.io/login" color="inherit" underline="none">CANDIDATO</Link></Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseLoginMenu} className={classes.menuPaperItem}>
-                    <Typography textAlign="center" sx={{fontSize:'0.8rem', fontWeight:'bold'}}>EMPRESA</Typography>
+                    <Typography textAlign="center" sx={{fontSize:'0.8rem', fontWeight:'bold'}}><Link href="https://www.gria.io/companyLogin" color="inherit" underline="none">EMPRESA</Link></Typography>
                   </MenuItem>
               </Menu>
             </Box>
