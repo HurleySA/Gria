@@ -8,39 +8,10 @@ import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from "../../assets/logo_gria.svg";
-import { makeStyles } from '@mui/styles';
 import {Link, Menu, MenuItem } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useStyles } from './styles';
 
-const useStyles = makeStyles({
-  logo: {
-    maxWidth: 83,
-  },
-  grow:{
-    flexGrow: 1.
-  },
-  appBar:{
-    background: "linear-gradient(to right, #920D65,#D81C98 )",
-    boxShadow: 'none,'
-  },
-  buttonHover:{
-    '&:hover': {
-      backgroundColor: '#C71990',
-    }
-  },
-  menuPaper: {
-    "& .MuiPaper-root":{ 
-      backgroundColor: '#CF1B92',
-      color: '#fff',
-    },
-  },
-  menuPaperItem:{
-    "&:hover":{
-      backgroundColor: '#fff !important',
-      color: '#CF1B92',
-    }
-  }
-});
 
 export default function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -68,9 +39,8 @@ export default function Header() {
         <Container maxWidth="lg">
           <Toolbar>
             
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1, paddingTop: 1, paddingLeft:1 }}>
-            <Link href="https://www.gria.io/"><img src={logo} alt="Logo Gria" className={classes.logo} /></Link>
-              
+            <Typography variant="h6" component="div" className={classes.logoContainer}>
+              <Link href="https://www.gria.io/"><img src={logo} alt="Logo Gria" className={classes.logo} /></Link>
             </Typography>
             <div className={classes.grow}/>
             <Box  sx={{display: { xs: 'flex', md: 'none' }, backgroundColor: '#CF1B92'  }}>
@@ -102,11 +72,11 @@ export default function Header() {
                   display: { xs: 'block', md: 'none' },
                 }}
               >
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Oportunidades</Typography>
+                  <MenuItem onClick={handleCloseNavMenu} className={classes.menuPaperItem}>
+                    <Typography textAlign="center" className={classes.menuPaperText}>Oportunidades</Typography>
                   </MenuItem>
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">LOGIN</Typography>
+                  <MenuItem onClick={handleCloseNavMenu} className={classes.menuPaperItem}>
+                    <Typography textAlign="center" className={classes.menuPaperText}>LOGIN</Typography>
                   </MenuItem>
               </Menu>
             </Box>
@@ -145,30 +115,16 @@ export default function Header() {
                 className={classes.menuPaper}
               >
                   <MenuItem onClick={handleCloseLoginMenu} className={classes.menuPaperItem}>
-                    <Typography textAlign="center" sx={{fontSize:'0.8rem', fontWeight:'bold'}}>CANDIDATO</Typography>
+                    <Typography textAlign="center"  className={classes.menuPaperText}>CANDIDATO</Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseLoginMenu} className={classes.menuPaperItem}>
                     <Typography textAlign="center" sx={{fontSize:'0.8rem', fontWeight:'bold'}}>EMPRESA</Typography>
                   </MenuItem>
               </Menu>
-                
             </Box>
-              {/* <Link href="#" color="inherit">Oportunidades</Link>
-              <Button color="inherit">Login</Button> */}
-            
           </Toolbar>
         </Container>  
       </AppBar>
     </Box>
   );
 }
-/* 
-<IconButton
-size="large"
-edge="start"
-color="inherit"
-aria-label="menu"
-sx={{ mr: 2 }}
->
-<MenuIcon />
-</IconButton> */
