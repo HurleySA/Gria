@@ -1,6 +1,6 @@
-import { Box, Button, Container, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, Button, Container,Typography } from "@mui/material";
 
-import { ChangeEvent, useState } from "react";
+import {useState } from "react";
 import InputFilter from "../InputFilter/InputFilter";
 
 import { useStyles } from "./styles";
@@ -20,8 +20,6 @@ export default function FilterBar() {
         cleanFilters();
     }
     return (
-
- 
         <Box className={classes.root} >
             <Container maxWidth="lg">
                 <Box className={classes.containerFilter}>
@@ -35,7 +33,6 @@ export default function FilterBar() {
                             <Button variant="outlined" color="secondary" size="small" onClick={cleanFilters} style={{minWidth:"150px", height:"35px", marginRight:"2rem"} }>Limpar Filtros</Button>
                             <Button variant="contained" color="secondary" size="small" onClick={showFilters} style={{minWidth:"95px", height:"35px"}}>Pesquisa</Button>
                         </Box>
-
                     </Box>
                 </Box>
             </Container>

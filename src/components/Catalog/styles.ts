@@ -2,21 +2,22 @@ import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
     title:{
-        padding:"2rem 0rem",
+        margin:"2rem 0rem !important",
         color:'#263238',
         letterSpacing:'0.01px',
         fontSize:'1.3rem !important', 
         fontWeight:'bold !important',
+        position:"relative",
+        
 
         "&:before": {
+            backgroundColor:"#2665FE",
+            content: "''",
             position: "absolute",
-            content: '""',
-            top: 0,
+            width: "80px",
+            height: "2px",
+            bottom: 0,
             left: 0,
-            right: 0,
-            width: "30%",
-            height: 2,
-            background: "red"
           }
     },
     pagination: {
@@ -30,6 +31,6 @@ export const useStyles = makeStyles({
         }
     },
     gridItem:{
-        maxWidth:"270px",
+        maxWidth:"280px",
     }
 })

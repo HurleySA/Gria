@@ -2,7 +2,7 @@ import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
     root:{
-        marginTop: '8rem',
+        marginTop: '6rem',
     },
     containerFilter:{
         padding: "1rem 1rem .5rem 1rem",

@@ -1,53 +1,37 @@
-import { Avatar, Box, Container, Grid, Link, Pagination, Skeleton, Typography } from "@mui/material"
+import { Container, Grid, Pagination, Skeleton, Typography } from "@mui/material"
 
 import { useCallback, useEffect, useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
 import CatalogItem from "../CatalogItem";
 import { useStyles } from "./styles";
 
-
-interface jobsProps{
-    id: number,
-    nameCompany: string,
-    srcLogo: string,
-    nameJob: string,
-    position: string,
-    period: string,
-    location: string,
-    date: Date,
-}
 export default function Catalog() {
-    const [loading, setLoading] = useState<Boolean>(true);
-    
-    const [jobs, setJobs] = useState<jobsProps[]>([]);
-    const [currentPage, setCurrentPage] = useState<number>(0);
-    const [itensPerPage, setItensPerPage] = useState<number>(8);
+    const {data, loading, request} = useFetch();
 
-    const pagesPagination = Math.ceil(jobs.length / itensPerPage);
+    const [currentPage, setCurrentPage] = useState<number>(0);
+    const [itensPerPage, setItensPerPage] = useState<number>(16);
+
+    const pagesPagination = Math.ceil(data.length / itensPerPage);
     const startIndex = currentPage * itensPerPage;
     const lastIndex = startIndex + itensPerPage;
    
-    const getCurrentJobs = useCallback((startIndex:number,lastIndex: number) =>  { return jobs.slice(startIndex, lastIndex)},
-    [jobs],
+    const getCurrentJobs = useCallback((startIndex:number,lastIndex: number) =>  { return data.slice(startIndex, lastIndex)},
+    [data],
     )
     const currentJobs = getCurrentJobs(startIndex, lastIndex);
 
     useEffect(()=> {
-        const url = "http://localhost:8000/jobs";
-        fetch(url)
-        .then(res => res.json())
-        .then(json => {
-            setJobs(json)
-            setLoading(false);
-        })
-    },[])
-    
-    console.log(loading);
+        const getData = async () =>{
+            await request("http://localhost:8000/jobs");
+        }
+        getData();
+    },[request])
     const classes = useStyles();
     return (
         <Container maxWidth="lg">
-            { jobs.length > 0 ? 
+            { data.length > 0 ? 
             <Typography variant="body1" component="div" className={classes.title}>
-                 Encontramos {jobs.length} oportunidades cadastradas
+                 Encontramos {data.length} oportunidades cadastradas
             </Typography> :
             <Typography variant="body1" component="div" className={classes.title}>
                 Não encontramos oportunidades cadastradas
