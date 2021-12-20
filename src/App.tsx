@@ -16,7 +16,6 @@ function App() {
       <FilterBar/>
       <Catalog/>
       <Cookies/>
-
     </ThemeProvider>
   
   );

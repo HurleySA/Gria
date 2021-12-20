@@ -6,13 +6,11 @@ export const theme = createTheme({
         default: '#FCFCFC',
       },
       primary: {
-        // Purple and green play nicely together.
         main: '#c6198f',
         light: '#D81C98',
         dark: '#920D65',
       },
       secondary: {
-        // This is green.A700 as hex.
         main: '#590A9D',
         light: '#590A9D',
         dark: '#3E076D',
