@@ -47,7 +47,7 @@ export default function CatalogItem(props: itemProps ) {
                             <Detail IconDetail={<PersonSearchIcon fontSize="small" className={classes.icons}/>} information={props.job.position}/> 
                             <Detail IconDetail={<AccessAlarmIcon fontSize="small" className={classes.icons}/>} information={props.job.period}/> 
                             <Detail IconDetail={<LocationOnOutlinedIcon fontSize="small" className={classes.icons}/>} information={props.job.location}/> 
-                            <Typography variant="body1" component="div" sx={{fontSize:".7rem", margin:"2.5rem  0rem 0rem 0rem"}}>
+                            <Typography variant="body1" component="div" sx={{fontSize:".7rem", margin:"1.5rem  0rem 0rem 0rem"}}>
                                 Criada há {getDaysDiff(props.job.date)} dias
                             </Typography>
                         </Link>

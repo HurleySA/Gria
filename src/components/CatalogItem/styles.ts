@@ -11,7 +11,6 @@ export const useStyles = makeStyles({
         maxWidth:'300px',
         minWidth:"270px",
         height: "100%",
-        padding:"1rem",
         
         '&:hover':{
             cursor:'pointer',
@@ -19,15 +18,14 @@ export const useStyles = makeStyles({
     },
     containerCompany: {
         display:"flex",
-        alignItems:"center",
+        alignItems:"flex-start",
     },
     nameCompany:{
         maxWidth:"200px",
-        height:"60px",
         fontWeight:"300 !important",
         wordBreak: "break-all",
-        fontSize:".8rem !important" ,
-        lineHeight:".8rem"
+        fontSize:".7rem !important" ,
+        lineHeight:".7rem"
     },
     containerName:{
         height:"60px",

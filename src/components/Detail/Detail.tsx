@@ -13,7 +13,7 @@ interface detailProps{
 export default function Detail(props: detailProps) {
     const classes = useStyles();
     return (
-        <Grid container direction="row" alignItems="center" spacing={1}>
+        <Grid container direction="row" alignItems="center" spacing={1} wrap="nowrap">
             <Grid item>
                 {props.IconDetail}
             </Grid>

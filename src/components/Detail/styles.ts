@@ -4,6 +4,6 @@ export const useStyles = makeStyles({
     information:{
         fontSize:".7rem", 
         fontWeight:"300", 
-        lineHeight:".8rem",
+        lineHeight:".7rem",
     }
 })

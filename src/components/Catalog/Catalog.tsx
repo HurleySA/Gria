@@ -55,7 +55,7 @@ export default function Catalog() {
             }
             <Grid container spacing={4}>
                 {(loading ? Array.from(new Array(8)) : currentJobs).map((job, index) => (
-                     <Grid key={index} item lg={3} md={4} sm={6} xs={9} sx={{maxWidth:"270px"}}>
+                     <Grid key={index} item lg={3} md={4} sm={6} xs={12} sx={{maxWidth:"280px"}}>
                         {job ?(  
                             <CatalogItem key={job.id} job={job}/>) 
                         :  (<Skeleton variant="rectangular" height={350} />)
