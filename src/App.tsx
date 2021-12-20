@@ -4,6 +4,7 @@ import Header from '../src/components/Header/Header';
 import Catalog from './components/Catalog/Catalog';
 import FilterBar from './components/FilterBar/FilterBar';
 import { CssBaseline } from '@mui/material';
+import Cookies from './components/Cookies/Cookies';
 
 const theme = createTheme({
   palette: {
@@ -48,6 +49,7 @@ function App() {
       <Header/>
       <FilterBar/>
       <Catalog/>
+      <Cookies/>
 
     </ThemeProvider>
   

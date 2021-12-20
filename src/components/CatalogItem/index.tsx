@@ -34,7 +34,7 @@ export default function CatalogItem(props: itemProps ) {
         <Grid className={classes.gridContainer}>
                         <Link href="https://www.gria.io/" underline="none" color="inherit" className={classes.gridItem}>
                             <Box className={classes.containerCompany}>
-                                <Avatar alt="Remy Sharp" src={props.job.srcLogo} sx={{marginRight:'10px'}}/>
+                                <Avatar alt="Avatar company" src={props.job.srcLogo} sx={{marginRight:'10px'}}/>
                                 <Typography variant="body1" component="div" align="center" className={classes.nameCompany} >
                                 {props.job.nameCompany}
                                 </Typography>

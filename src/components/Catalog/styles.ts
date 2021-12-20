@@ -6,7 +6,18 @@ export const useStyles = makeStyles({
         color:'#263238',
         letterSpacing:'0.01px',
         fontSize:'1.3rem !important', 
-        fontWeight:'bold !important'
+        fontWeight:'bold !important',
+
+        "&:before": {
+            position: "absolute",
+            content: '""',
+            top: 0,
+            left: 0,
+            right: 0,
+            width: "30%",
+            height: 2,
+            background: "red"
+          }
     },
     pagination: {
         "&":{

@@ -24,7 +24,8 @@ export const useStyles = makeStyles({
     },
     containerButtons:{
         display:"flex",
-        flexGrow:1,
+        justifyContent:"space-between",
+        flexGrow:0,
         minWidth:'270px',
     }
 });

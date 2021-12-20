@@ -9,6 +9,7 @@ export const useStyles = makeStyles({
     },
     gridItem: {
         maxWidth:'300px',
+        minWidth:"270px",
         height: "100%",
         padding:"1rem",
         
